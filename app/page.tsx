@@ -41,6 +41,11 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
+      <div className="mx-auto mt-4 w-full max-w-6xl px-4">
+        <p className="rounded-md border border-amber-300/70 bg-amber-50/80 px-3 py-2 text-center text-xs font-medium text-amber-900">
+          Démo non-officielle — proposition de refonte préparée par Jérôme Delodder. Site non affilié à Clement Geneau.
+        </p>
+      </div>
       <HomeHero />
       <HomeWedges />
       <HomeServicesOverview />
