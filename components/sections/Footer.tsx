@@ -1,4 +1,10 @@
+'use client'
+
 import Link from 'next/link'
+
+function openCookieBanner() {
+  window.dispatchEvent(new Event('open-cookie-banner'))
+}
 
 export function Footer() {
   return (
@@ -59,11 +65,45 @@ export function Footer() {
             >
               0489/63.69.43
             </a>
+            <a
+              href="mailto:clement.geneau.kine@gmail.com"
+              className="mt-1 block text-xs hover:text-[var(--color-brand-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-primary)]"
+            >
+              clement.geneau.kine@gmail.com
+            </a>
           </address>
         </div>
 
-        <div className="mt-8 border-t border-[var(--color-border-default)] pt-6 text-center text-xs text-[var(--color-text-muted)]">
-          <p>© {new Date().getFullYear()} Clément Geneau. Tous droits réservés.</p>
+        <div className="mt-8 border-t border-[var(--color-border-default)] pt-6">
+          <div className="flex flex-wrap items-center justify-between gap-4 text-xs text-[var(--color-text-muted)]">
+            <p>© {new Date().getFullYear()} Clément Geneau. Tous droits réservés.</p>
+            <nav aria-label="Liens légaux" className="flex flex-wrap gap-4">
+              <Link
+                href="/mentions-legales"
+                className="hover:text-[var(--color-brand-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-primary)]"
+              >
+                Mentions légales
+              </Link>
+              <Link
+                href="/politique-confidentialite"
+                className="hover:text-[var(--color-brand-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-primary)]"
+              >
+                Confidentialité
+              </Link>
+              <Link
+                href="/politique-cookies"
+                className="hover:text-[var(--color-brand-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-primary)]"
+              >
+                Cookies
+              </Link>
+              <button
+                onClick={openCookieBanner}
+                className="hover:text-[var(--color-brand-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-primary)]"
+              >
+                Gérer mes cookies
+              </button>
+            </nav>
+          </div>
         </div>
       </div>
     </footer>

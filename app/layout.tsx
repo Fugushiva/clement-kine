@@ -10,7 +10,8 @@ import {
 import { RosaProvider } from '@/components/providers/RosaProvider';
 import { Navbar } from '@/components/sections/Navbar';
 import { Footer } from '@/components/sections/Footer';
-import { Analytics } from '@vercel/analytics/react';
+import { CookieBanner } from '@/components/layout/CookieBanner';
+import { AnalyticsConditional } from '@/components/layout/AnalyticsConditional';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const fraunces = Fraunces({
@@ -107,7 +108,8 @@ export default function RootLayout({
           </main>
           <Footer />
         </RosaProvider>
-        <Analytics />
+        <CookieBanner />
+        <AnalyticsConditional />
         <SpeedInsights />
       </body>
     </html>
