@@ -2,6 +2,10 @@ import type { Metadata } from 'next';
 import { Fraunces, Inter } from 'next/font/google';
 import './globals.css';
 import { SITE_URL } from '@/lib/constants';
+import { Navbar } from '@/components/layout/Navbar';
+import { Footer } from '@/components/layout/Footer';
+import { CookieBanner } from '@/components/layout/CookieBanner';
+import { SkipNavLink } from '@/components/layout/SkipNavLink';
 
 const fraunces = Fraunces({
   variable: '--font-fraunces',
@@ -64,8 +68,12 @@ export default function RootLayout({
       lang="fr"
       className={`${fraunces.variable} ${inter.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col bg-surface-default text-text-body antialiased">
+      <body className="min-h-full flex flex-col bg-[var(--color-surface-default)] text-[var(--color-text-body)] antialiased">
+        <SkipNavLink />
+        <Navbar />
         {children}
+        <Footer />
+        <CookieBanner />
       </body>
     </html>
   );
