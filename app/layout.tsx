@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import { Fraunces, Inter } from 'next/font/google';
 import './globals.css';
 import { SITE_URL } from '@/lib/constants';
+import { RosaProvider } from '@/components/providers/RosaProvider';
+import { Navbar } from '@/components/sections/Navbar';
+import { Footer } from '@/components/sections/Footer';
 
 const fraunces = Fraunces({
   variable: '--font-fraunces',
@@ -65,7 +68,20 @@ export default function RootLayout({
       className={`${fraunces.variable} ${inter.variable} h-full`}
     >
       <body className="min-h-full flex flex-col bg-surface-default text-text-body antialiased">
-        {children}
+        {/* Skip navigation — accessibility */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-[var(--radius-default)] focus:bg-[var(--color-brand-primary)] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-[var(--color-text-on-brand)] focus:shadow-lg"
+        >
+          Aller au contenu principal
+        </a>
+        <RosaProvider>
+          <Navbar />
+          <main id="main-content" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+        </RosaProvider>
       </body>
     </html>
   );

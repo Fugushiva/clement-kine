@@ -1,11 +1,11 @@
-import Link from 'next/link'
+'use client'
+import { useRosa } from '@/lib/rosa'
 import { cn } from '@/lib/utils'
 
 interface CTASectionProps {
   title?: string
   description?: string
   ctaLabel?: string
-  ctaHref?: string
   className?: string
 }
 
@@ -13,9 +13,10 @@ export function CTASection({
   title = 'Prêt à reprendre rendez-vous avec votre corps ?',
   description = 'Séances de 60 minutes, double expertise kiné & ostéo, suivi personnalisé.',
   ctaLabel = 'Prendre rendez-vous',
-  ctaHref = '#rdv',
   className,
 }: CTASectionProps) {
+  const { open } = useRosa()
+
   return (
     <section
       aria-label="Appel à l'action"
@@ -31,12 +32,12 @@ export function CTASection({
         <p className="mb-8 text-lg text-[var(--color-text-on-brand)] opacity-90">
           {description}
         </p>
-        <Link
-          href={ctaHref}
+        <button
+          onClick={open}
           className="inline-flex items-center justify-center rounded-[var(--radius-default)] bg-[var(--color-surface-default)] px-8 py-4 text-base font-semibold text-[var(--color-brand-primary)] shadow-sm transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-surface-default)]"
         >
           {ctaLabel}
-        </Link>
+        </button>
       </div>
     </section>
   )

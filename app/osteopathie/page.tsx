@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 
 export default function OsteopathiePage() {
   return (
-    <main id="main-content">
+    <>
       <OsteoHero />
       <OsteoApproaches />
       <OsteoPathologies />
@@ -60,6 +60,6 @@ export default function OsteopathiePage() {
         ctaLabel="Prendre RDV à Ixelles"
         description="Cabinet Ixelles — Rue Defacqz 44, 1050 Ixelles. Séances de 60 minutes."
       />
-    </main>
+    </>
   )
 }

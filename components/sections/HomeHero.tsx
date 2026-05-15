@@ -1,8 +1,11 @@
 'use client'
 
 import Link from 'next/link'
+import { useRosa } from '@/lib/rosa'
 
 export function HomeHero() {
+  const { open } = useRosa()
+
   return (
     <section
       aria-label="Présentation"
@@ -38,12 +41,12 @@ export function HomeHero() {
               séances longues, suivi personnalisé.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row">
-              <Link
-                href="#rdv"
+              <button
+                onClick={open}
                 className="inline-flex items-center justify-center rounded-[var(--radius-default)] bg-[var(--color-brand-primary)] px-8 py-4 text-base font-semibold text-[var(--color-text-on-brand)] shadow-sm transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-primary)]"
               >
                 Prendre rendez-vous
-              </Link>
+              </button>
               <Link
                 href="#services"
                 className="inline-flex items-center justify-center rounded-[var(--radius-default)] border border-[var(--color-border-strong)] bg-transparent px-8 py-4 text-base font-semibold text-[var(--color-text-body)] transition-colors hover:bg-[var(--color-surface-muted)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-primary)]"

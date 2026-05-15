@@ -10,15 +10,13 @@ import { StickyCTABar } from '@/components/sections/StickyCTABar'
 export default function HomePage() {
   return (
     <>
-      <main id="main-content">
-        <HomeHero />
-        <HomeWedges />
-        <HomeServicesOverview />
-        <HomeStats />
-        <HomeCabinetsPreview />
-        <Testimonials filter="all" />
-        <CTASection />
-      </main>
+      <HomeHero />
+      <HomeWedges />
+      <HomeServicesOverview />
+      <HomeStats />
+      <HomeCabinetsPreview />
+      <Testimonials filter="all" />
+      <CTASection />
       <StickyCTABar />
     </>
   )

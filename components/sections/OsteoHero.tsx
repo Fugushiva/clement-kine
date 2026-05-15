@@ -1,6 +1,10 @@
+'use client'
 import Link from 'next/link'
+import { useRosa } from '@/lib/rosa'
 
 export function OsteoHero() {
+  const { open } = useRosa()
+
   return (
     <section
       aria-label="Introduction ostéopathie"
@@ -32,12 +36,12 @@ export function OsteoHero() {
           Ostéopathe D.O. à Ixelles. Approche fasciale, viscérale et
           crânio-sacrée. Séances de 60 minutes au cœur d&apos;Ixelles.
         </p>
-        <Link
-          href="#rdv"
+        <button
+          onClick={open}
           className="inline-flex items-center justify-center rounded-[var(--radius-default)] bg-[var(--color-brand-primary)] px-8 py-4 text-base font-semibold text-[var(--color-text-on-brand)] shadow-sm transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-primary)]"
         >
           Prendre RDV à Ixelles
-        </Link>
+        </button>
       </div>
     </section>
   )

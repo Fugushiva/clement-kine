@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function KinesitherapiePage() {
   return (
-    <main id="main-content">
+    <>
       <KineHero />
       <KineTabs />
       <KineExerciseProgram />
@@ -58,6 +58,6 @@ export default function KinesitherapiePage() {
         ctaLabel="Prendre RDV à Etterbeek"
         description="Cabinet Etterbeek — Avenue d'Auderghem 59C, 1040 Etterbeek. Séances de 60 minutes."
       />
-    </main>
+    </>
   )
 }
