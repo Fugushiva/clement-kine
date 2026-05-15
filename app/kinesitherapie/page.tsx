@@ -1,5 +1,9 @@
 import type { Metadata } from 'next'
 import { SITE_URL } from '@/lib/constants'
+import {
+  generateServiceKineSchema,
+  generateLocalBusinessEtterbeekSchema,
+} from '@/lib/schemas'
 import { KineHero } from '@/components/sections/KineHero'
 import { KineTabs } from '@/components/sections/KineTabs'
 import { KineExerciseProgram } from '@/components/sections/KineExerciseProgram'
@@ -20,6 +24,23 @@ export const metadata: Metadata = {
     description:
       'Kinésithérapeute à Etterbeek. Sport, neurologie post-AVC, rééducation générale.',
     url: `${SITE_URL}/kinesitherapie`,
+    images: [
+      {
+        url: `${SITE_URL}/og/kinesitherapie.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Kinésithérapie à Etterbeek — Clément Geneau',
+      },
+    ],
+    type: 'website',
+    locale: 'fr_BE',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Kinésithérapeute à Etterbeek — Clément Geneau',
+    description:
+      'Kinésithérapeute à Etterbeek. Sport, neurologie post-AVC, rééducation générale.',
+    images: [`${SITE_URL}/og/kinesitherapie.png`],
   },
   robots: {
     index: false,
@@ -28,8 +49,19 @@ export const metadata: Metadata = {
 }
 
 export default function KinesitherapiePage() {
+  const serviceKineSchema = generateServiceKineSchema()
+  const localBusinessEtterbeek = generateLocalBusinessEtterbeekSchema()
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceKineSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessEtterbeek) }}
+      />
       <KineHero />
       <KineTabs />
       <KineExerciseProgram />

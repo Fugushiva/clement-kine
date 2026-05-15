@@ -2,9 +2,16 @@ import type { Metadata } from 'next';
 import { Fraunces, Inter } from 'next/font/google';
 import './globals.css';
 import { SITE_URL } from '@/lib/constants';
+import {
+  generatePhysicianSchema,
+  generateLocalBusinessIxellesSchema,
+  generateLocalBusinessEtterbeekSchema,
+} from '@/lib/schemas';
 import { RosaProvider } from '@/components/providers/RosaProvider';
 import { Navbar } from '@/components/sections/Navbar';
 import { Footer } from '@/components/sections/Footer';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const fraunces = Fraunces({
   variable: '--font-fraunces',
@@ -62,11 +69,29 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const physicianSchema = generatePhysicianSchema();
+  const localBusinessIxelles = generateLocalBusinessIxellesSchema();
+  const localBusinessEtterbeek = generateLocalBusinessEtterbeekSchema();
+
   return (
     <html
       lang="fr"
       className={`${fraunces.variable} ${inter.variable} h-full`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(physicianSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessIxelles) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessEtterbeek) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-surface-default text-text-body antialiased">
         {/* Skip navigation — accessibility */}
         <a
@@ -82,6 +107,8 @@ export default function RootLayout({
           </main>
           <Footer />
         </RosaProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

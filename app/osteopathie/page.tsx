@@ -1,5 +1,9 @@
 import type { Metadata } from 'next'
 import { SITE_URL } from '@/lib/constants'
+import {
+  generateServiceOsteoSchema,
+  generateLocalBusinessIxellesSchema,
+} from '@/lib/schemas'
 import { OsteoHero } from '@/components/sections/OsteoHero'
 import { OsteoApproaches } from '@/components/sections/OsteoApproaches'
 import { OsteoPathologies } from '@/components/sections/OsteoPathologies'
@@ -21,6 +25,23 @@ export const metadata: Metadata = {
     description:
       'Ostéopathe D.O. à Ixelles. Approche fasciale, viscérale et crânio-sacrée. Séances de 60 minutes.',
     url: `${SITE_URL}/osteopathie`,
+    images: [
+      {
+        url: `${SITE_URL}/og/osteopathie.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Ostéopathie à Ixelles — Clément Geneau',
+      },
+    ],
+    type: 'website',
+    locale: 'fr_BE',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Ostéopathe à Ixelles — Clément Geneau',
+    description:
+      'Ostéopathe D.O. à Ixelles. Approche fasciale, viscérale et crânio-sacrée. Séances de 60 minutes.',
+    images: [`${SITE_URL}/og/osteopathie.png`],
   },
   robots: {
     index: false,
@@ -29,8 +50,19 @@ export const metadata: Metadata = {
 }
 
 export default function OsteopathiePage() {
+  const serviceOsteoSchema = generateServiceOsteoSchema()
+  const localBusinessIxelles = generateLocalBusinessIxellesSchema()
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceOsteoSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessIxelles) }}
+      />
       <OsteoHero />
       <OsteoApproaches />
       <OsteoPathologies />
