@@ -33,7 +33,11 @@ function saveConsent(consent: Omit<CookieConsent, 'timestamp'>) {
 }
 
 export function CookieBanner() {
-  const [visible, setVisible] = React.useState(false);
+  // Lazy initializer: check localStorage on first render (client-only)
+  const [visible, setVisible] = React.useState<boolean>(() => {
+    if (typeof window === 'undefined') return false;
+    return getStoredConsent() === null;
+  });
   const [showCustomize, setShowCustomize] = React.useState(false);
   const [analytics, setAnalytics] = React.useState(false);
   const [thirdParty, setThirdParty] = React.useState(false);
@@ -42,12 +46,8 @@ export function CookieBanner() {
   const modalRef = React.useRef<HTMLDivElement>(null);
   const firstFocusRef = React.useRef<HTMLButtonElement>(null);
 
-  // Show banner if no consent stored
+  // Listen for "Gérer mes cookies" event from Footer
   React.useEffect(() => {
-    const stored = getStoredConsent();
-    if (!stored) setVisible(true);
-
-    // Listen for "Gérer mes cookies" event from Footer
     const handleOpen = () => {
       setVisible(true);
       setShowCustomize(true);
