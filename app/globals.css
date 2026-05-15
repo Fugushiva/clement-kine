@@ -1,26 +1,65 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ─── Design Tokens — Hermes Clément Geneau ─────────────────────────────── */
+@theme {
+  /* Brand */
+  --color-brand-primary: oklch(58% 0.12 35);
+  --color-brand-secondary: oklch(70% 0.08 145);
+  --color-accent: oklch(75% 0.10 75);
+
+  /* Surfaces */
+  --color-surface-default: oklch(98% 0.005 80);
+  --color-surface-elevated: oklch(99% 0.003 80);
+  --color-surface-muted: oklch(94% 0.008 80);
+  --color-surface-inverse: oklch(20% 0.01 80);
+
+  /* Text */
+  --color-text-body: oklch(25% 0.01 80);
+  --color-text-muted: oklch(45% 0.01 80);
+  --color-text-on-brand: oklch(98% 0.005 80);
+  --color-text-inverse: oklch(95% 0.005 80);
+  --color-heading: oklch(20% 0.01 80);
+
+  /* Borders */
+  --color-border-default: oklch(85% 0.01 80);
+  --color-border-strong: oklch(70% 0.01 80);
+
+  /* Interactive */
+  --color-focus-ring: oklch(58% 0.12 35);
+
+  /* Semantic */
+  --color-success: oklch(65% 0.13 150);
+  --color-error: oklch(58% 0.18 25);
+  --color-warning: oklch(80% 0.13 85);
+
+  /* Radius */
+  --radius-default: 0.75rem;
+
+  /* Typography */
+  --font-heading: var(--font-fraunces), Georgia, serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Base styles ────────────────────────────────────────────────────────── */
+html {
+  color-scheme: light;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-surface-default);
+  color: var(--color-text-body);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-heading);
+}
+
+/* ─── Focus ring ─────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
 }
