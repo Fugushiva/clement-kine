@@ -29,17 +29,14 @@ function saveConsent(consent: Omit<CookieConsent, 'timestamp'>) {
 }
 
 export function CookieBanner() {
-  const [visible, setVisible] = useState(false)
+  // Lazy initializer: read localStorage once on mount, no effect needed
+  const [visible, setVisible] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return false
+    return getStoredConsent() === null
+  })
   const [showModal, setShowModal] = useState(false)
   const [analyticsEnabled, setAnalyticsEnabled] = useState(true)
   const [thirdPartyEnabled, setThirdPartyEnabled] = useState(true)
-
-  useEffect(() => {
-    const stored = getStoredConsent()
-    if (!stored) {
-      setVisible(true)
-    }
-  }, [])
 
   // Expose a global function to reopen the banner from the footer
   useEffect(() => {

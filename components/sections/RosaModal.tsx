@@ -10,7 +10,11 @@ interface RosaModalProps {
 const FOCUSABLE_SELECTORS =
   'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
 
-export function RosaModal({ isOpen, onClose }: RosaModalProps) {
+/**
+ * Inner modal — rendered only when isOpen=true, so state always starts fresh.
+ * Avoids calling setState inside effects.
+ */
+function RosaModalInner({ onClose }: { onClose: () => void }) {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const modalRef = useRef<HTMLDivElement>(null)
@@ -48,9 +52,6 @@ export function RosaModal({ isOpen, onClose }: RosaModalProps) {
   )
 
   useEffect(() => {
-    if (!isOpen) return
-    setLoading(true)
-    setError(false)
     document.addEventListener('keydown', handleKeyDown)
     document.body.style.overflow = 'hidden'
     // Focus the close button when modal opens
@@ -59,9 +60,7 @@ export function RosaModal({ isOpen, onClose }: RosaModalProps) {
       document.removeEventListener('keydown', handleKeyDown)
       document.body.style.overflow = ''
     }
-  }, [isOpen, handleKeyDown])
-
-  if (!isOpen) return null
+  }, [handleKeyDown])
 
   return (
     <div
@@ -151,4 +150,12 @@ export function RosaModal({ isOpen, onClose }: RosaModalProps) {
       </div>
     </div>
   )
+}
+
+/**
+ * Public wrapper — conditionally renders RosaModalInner so state resets on each open.
+ */
+export function RosaModal({ isOpen, onClose }: RosaModalProps) {
+  if (!isOpen) return null
+  return <RosaModalInner onClose={onClose} />
 }

@@ -1,0 +1,434 @@
+{
+  "$schema": "https://hermes.local/schemas/conformity-manifest-v1.json",
+  "version": "1.0.0",
+  "generated_from": [
+    "rules/frontend-checklist.md",
+    "rules/seo-checklist.md",
+    "rules/accessibility-checklist.md",
+    "rules/performance-checklist.md",
+    "rules/content-rules.md"
+  ],
+  "instructions_for_checker": "For each item, return one status: '✅' (planned/handled in site-plan), '⚠️' (partially handled, justify), '❌ N/A' (not applicable, justify). Output a JSON object {item_id: {status: '✅|⚠️|❌', justification: '<1 line>'}}. Never leave any item unanswered.",
+  "items": [
+    {
+      "id": "FE-001",
+      "category": "frontend",
+      "label": "Mobile-first responsive design (320px → 1920px)",
+      "severity": "blocking"
+    },
+    {
+      "id": "FE-002",
+      "category": "frontend",
+      "label": "Design tokens defined (colors, typography, spacing, radius)",
+      "severity": "blocking"
+    },
+    {
+      "id": "FE-003",
+      "category": "frontend",
+      "label": "OKLCH color space for brand palette",
+      "severity": "recommended"
+    },
+    {
+      "id": "FE-004",
+      "category": "frontend",
+      "label": "Dark mode decision argued (yes/no with rationale)",
+      "severity": "recommended"
+    },
+    {
+      "id": "FE-005",
+      "category": "frontend",
+      "label": "Typography: max 2 font families, modular scale in rem",
+      "severity": "blocking"
+    },
+    {
+      "id": "FE-006",
+      "category": "frontend",
+      "label": "Smooth scroll (Lenis) wrapping the layout",
+      "severity": "recommended"
+    },
+    {
+      "id": "FE-007",
+      "category": "frontend",
+      "label": "Hero section: orchestrated entrance animation (GSAP/Framer)",
+      "severity": "recommended"
+    },
+    {
+      "id": "FE-008",
+      "category": "frontend",
+      "label": "Scroll-triggered animations on at least one section per route",
+      "severity": "recommended"
+    },
+    {
+      "id": "FE-009",
+      "category": "frontend",
+      "label": "Micro-interactions on all interactive elements",
+      "severity": "recommended"
+    },
+    {
+      "id": "FE-010",
+      "category": "frontend",
+      "label": "GPU-only animations (transform + opacity) — no left/top/width animated",
+      "severity": "blocking"
+    },
+    {
+      "id": "FE-011",
+      "category": "frontend",
+      "label": "@media (prefers-reduced-motion) reduces or removes animations",
+      "severity": "blocking"
+    },
+    {
+      "id": "FE-012",
+      "category": "frontend",
+      "label": "Custom cursor on desktop, hidden on pointer:coarse",
+      "severity": "optional"
+    },
+    {
+      "id": "FE-013",
+      "category": "frontend",
+      "label": "Marquee component if client logos / references present",
+      "severity": "optional"
+    },
+    {
+      "id": "FE-014",
+      "category": "frontend",
+      "label": "Navbar: mobile-first hamburger, accessible, scroll-progressive reveal",
+      "severity": "blocking"
+    },
+    {
+      "id": "FE-015",
+      "category": "frontend",
+      "label": "Footer with legal links and revoke-cookies trigger",
+      "severity": "blocking"
+    },
+    {
+      "id": "SEO-001",
+      "category": "seo",
+      "label": "Indexation BLOCKED in Phase 3 — robots.txt + X-Robots-Tag + meta robots",
+      "severity": "blocking"
+    },
+    {
+      "id": "SEO-002",
+      "category": "seo",
+      "label": "Unique <title> per page with brand suffix",
+      "severity": "blocking"
+    },
+    {
+      "id": "SEO-003",
+      "category": "seo",
+      "label": "Unique meta description per page (130-160 chars)",
+      "severity": "blocking"
+    },
+    {
+      "id": "SEO-004",
+      "category": "seo",
+      "label": "<link rel='canonical'> on every route",
+      "severity": "blocking"
+    },
+    {
+      "id": "SEO-005",
+      "category": "seo",
+      "label": "Open Graph tags (og:title, og:description, og:image 1200x630)",
+      "severity": "blocking"
+    },
+    {
+      "id": "SEO-006",
+      "category": "seo",
+      "label": "Twitter Card tags",
+      "severity": "recommended"
+    },
+    {
+      "id": "SEO-007",
+      "category": "seo",
+      "label": "JSON-LD schema.org Organization OR LocalBusiness on layout",
+      "severity": "blocking"
+    },
+    {
+      "id": "SEO-008",
+      "category": "seo",
+      "label": "JSON-LD schema.org Service per service page (if applicable)",
+      "severity": "recommended"
+    },
+    {
+      "id": "SEO-009",
+      "category": "seo",
+      "label": "Primary keyword defined per page (long-tail for secondary pages)",
+      "severity": "blocking"
+    },
+    {
+      "id": "SEO-010",
+      "category": "seo",
+      "label": "Search intent (informational/transactional/navigational) per route",
+      "severity": "recommended"
+    },
+    {
+      "id": "SEO-011",
+      "category": "seo",
+      "label": "Internal linking plan documented",
+      "severity": "recommended"
+    },
+    {
+      "id": "SEO-012",
+      "category": "seo",
+      "label": "next-sitemap configured (file present, NOT submitted to GSC)",
+      "severity": "blocking"
+    },
+    {
+      "id": "SEO-013",
+      "category": "seo",
+      "label": "<html lang='xx'> set correctly",
+      "severity": "blocking"
+    },
+    {
+      "id": "SEO-014",
+      "category": "seo",
+      "label": "Single H1 per page, expressing benefit (not description)",
+      "severity": "blocking"
+    },
+    {
+      "id": "SEO-015",
+      "category": "seo",
+      "label": "Heading hierarchy H1 > H2 > H3 respected",
+      "severity": "blocking"
+    },
+    {
+      "id": "SEO-016",
+      "category": "seo",
+      "label": "Image alt attributes meaningful (not decorative-only)",
+      "severity": "blocking"
+    },
+    {
+      "id": "A11Y-001",
+      "category": "accessibility",
+      "label": "WCAG AA color contrast ratio ≥ 4.5:1 for body text",
+      "severity": "blocking"
+    },
+    {
+      "id": "A11Y-002",
+      "category": "accessibility",
+      "label": "WCAG AA color contrast ratio ≥ 3:1 for UI components and large text",
+      "severity": "blocking"
+    },
+    {
+      "id": "A11Y-003",
+      "category": "accessibility",
+      "label": "Skip nav link to #main-content",
+      "severity": "blocking"
+    },
+    {
+      "id": "A11Y-004",
+      "category": "accessibility",
+      "label": "Focus-visible ring on all interactive elements",
+      "severity": "blocking"
+    },
+    {
+      "id": "A11Y-005",
+      "category": "accessibility",
+      "label": "Keyboard navigation works for all flows (no mouse-only)",
+      "severity": "blocking"
+    },
+    {
+      "id": "A11Y-006",
+      "category": "accessibility",
+      "label": "ARIA labels on icon-only buttons",
+      "severity": "blocking"
+    },
+    {
+      "id": "A11Y-007",
+      "category": "accessibility",
+      "label": "Form labels associated (htmlFor / aria-labelledby)",
+      "severity": "blocking"
+    },
+    {
+      "id": "A11Y-008",
+      "category": "accessibility",
+      "label": "Form errors announced (aria-invalid, aria-describedby)",
+      "severity": "blocking"
+    },
+    {
+      "id": "A11Y-009",
+      "category": "accessibility",
+      "label": "Mobile nav: trap focus when open, aria-expanded set",
+      "severity": "blocking"
+    },
+    {
+      "id": "A11Y-010",
+      "category": "accessibility",
+      "label": "Cookie banner: keyboard accessible, trap focus, escape closes",
+      "severity": "blocking"
+    },
+    {
+      "id": "A11Y-011",
+      "category": "accessibility",
+      "label": "axe-core 0 critical errors required at delivery",
+      "severity": "blocking"
+    },
+    {
+      "id": "A11Y-012",
+      "category": "accessibility",
+      "label": "Lang attributes on foreign words/quotes if applicable",
+      "severity": "recommended"
+    },
+    {
+      "id": "A11Y-013",
+      "category": "accessibility",
+      "label": "Exactly one <main> landmark per rendered page (owned by [lang] or root layout)",
+      "severity": "blocking"
+    },
+    {
+      "id": "A11Y-014",
+      "category": "accessibility",
+      "label": "Exactly one <footer>/contentinfo landmark per page, sibling of <main> (not child)",
+      "severity": "blocking"
+    },
+    {
+      "id": "A11Y-015",
+      "category": "accessibility",
+      "label": "<html lang> dynamic from route params, no SSR/client mismatch (no hardcoded 'en' in multilingual sites)",
+      "severity": "blocking"
+    },
+    {
+      "id": "A11Y-016",
+      "category": "accessibility",
+      "label": "page.tsx files contain no <main>, <footer>, <header>, <html>, <body> (layout-only)",
+      "severity": "blocking"
+    },
+    {
+      "id": "FE-016",
+      "category": "frontend",
+      "label": "All token pairs (fg,bg) used in components pass WCAG AA contrast (validated by @hermes-tokens-contrast-validator)",
+      "severity": "blocking"
+    },
+    {
+      "id": "FE-017",
+      "category": "frontend",
+      "label": "No console.error / console.warn / pageerror at runtime (verified by phase-audit AXIS 9)",
+      "severity": "blocking"
+    },
+    {
+      "id": "PERF-001",
+      "category": "performance",
+      "label": "Lighthouse Performance ≥ 90 (mobile)",
+      "severity": "blocking"
+    },
+    {
+      "id": "PERF-002",
+      "category": "performance",
+      "label": "LCP ≤ 2.5s (Largest Contentful Paint)",
+      "severity": "blocking"
+    },
+    {
+      "id": "PERF-003",
+      "category": "performance",
+      "label": "CLS ≤ 0.1 (Cumulative Layout Shift)",
+      "severity": "blocking"
+    },
+    {
+      "id": "PERF-004",
+      "category": "performance",
+      "label": "INP ≤ 200ms (Interaction to Next Paint)",
+      "severity": "blocking"
+    },
+    {
+      "id": "PERF-005",
+      "category": "performance",
+      "label": "Hero image: priority={true}, width/height set",
+      "severity": "blocking"
+    },
+    {
+      "id": "PERF-006",
+      "category": "performance",
+      "label": "next/image used everywhere (no <img> raw)",
+      "severity": "blocking"
+    },
+    {
+      "id": "PERF-007",
+      "category": "performance",
+      "label": "Fonts via next/font with display: swap",
+      "severity": "blocking"
+    },
+    {
+      "id": "PERF-008",
+      "category": "performance",
+      "label": "Heavy non-critical components dynamic() with ssr:false",
+      "severity": "recommended"
+    },
+    {
+      "id": "PERF-009",
+      "category": "performance",
+      "label": "@vercel/analytics + @vercel/speed-insights wired in layout.tsx",
+      "severity": "blocking"
+    },
+    {
+      "id": "PERF-010",
+      "category": "performance",
+      "label": "Lazy-load below-fold images (loading='lazy' default)",
+      "severity": "blocking"
+    },
+    {
+      "id": "PERF-011",
+      "category": "performance",
+      "label": "No render-blocking resources beyond critical fonts",
+      "severity": "recommended"
+    },
+    {
+      "id": "PERF-012",
+      "category": "performance",
+      "label": "Bundle size monitored (build output check)",
+      "severity": "recommended"
+    },
+    {
+      "id": "CONTENT-001",
+      "category": "content",
+      "label": "Brand voice/tone defined in site-plan §6.1",
+      "severity": "blocking"
+    },
+    {
+      "id": "CONTENT-002",
+      "category": "content",
+      "label": "Voice/tone consistent with visual tone (§4.4 vs §6.1)",
+      "severity": "blocking"
+    },
+    {
+      "id": "CONTENT-003",
+      "category": "content",
+      "label": "H1 expressed as benefit, not description",
+      "severity": "blocking"
+    },
+    {
+      "id": "CONTENT-004",
+      "category": "content",
+      "label": "CTA text uses active verbs (not 'Learn more', 'Click here')",
+      "severity": "blocking"
+    },
+    {
+      "id": "CONTENT-005",
+      "category": "content",
+      "label": "Microcopy for forms: helper text, error states, success states",
+      "severity": "blocking"
+    },
+    {
+      "id": "CONTENT-006",
+      "category": "content",
+      "label": "Placeholders explicitly marked <!-- TODO --> if client content missing",
+      "severity": "blocking"
+    },
+    {
+      "id": "CONTENT-007",
+      "category": "content",
+      "label": "Headlines respect target persona vocabulary (no jargon for B2C local)",
+      "severity": "recommended"
+    },
+    {
+      "id": "CONTENT-008",
+      "category": "content",
+      "label": "Social proof elements present (testimonials, logos, counters)",
+      "severity": "recommended"
+    },
+    {
+      "id": "CONTENT-009",
+      "category": "content",
+      "label": "Page meta descriptions hand-written, not auto-generated",
+      "severity": "blocking"
+    }
+  ]
+}
